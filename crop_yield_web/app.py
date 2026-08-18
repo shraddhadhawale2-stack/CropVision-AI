@@ -10,7 +10,7 @@ model = joblib.load("crop_yield_model.pkl")
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return "NEW CROPVISION PAGE"
 
 
 @app.route("/predict", methods=["POST"])

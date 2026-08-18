@@ -6,16 +6,11 @@
 
     <title>CropVision AI</title>
 
-    <!-- Modern Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-
-        /* =========================
-           GLOBAL
-        ========================= */
 
         * {
             box-sizing: border-box;
@@ -34,26 +29,19 @@
             line-height: 1.6;
         }
 
-
-        /* =========================
-           HEADER
-        ========================= */
+        /* HEADER */
 
         .header {
             position: sticky;
             top: 0;
             z-index: 1000;
-
             background: rgba(10, 61, 46, 0.96);
             backdrop-filter: blur(12px);
-
             color: white;
             padding: 16px 6%;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             box-shadow: 0 5px 25px rgba(10, 61, 46, 0.18);
         }
 
@@ -66,13 +54,10 @@
         .brand-icon {
             width: 42px;
             height: 42px;
-
             border-radius: 13px;
             background: #d9f99d;
-
             display: grid;
             place-items: center;
-
             font-size: 23px;
         }
 
@@ -91,28 +76,20 @@
             text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-
-            transition: 0.25s;
         }
 
         .nav a:hover {
             color: #d9f99d;
         }
 
-
-        /* =========================
-           HERO
-        ========================= */
+        /* HERO */
 
         .hero {
             min-height: 430px;
-
             padding: 75px 7%;
-
             display: flex;
             align-items: center;
             justify-content: space-between;
-
             gap: 50px;
 
             background:
@@ -138,25 +115,18 @@
 
         .tag {
             display: inline-block;
-
             padding: 7px 14px;
-
             border: 1px solid rgba(255,255,255,0.25);
             background: rgba(255,255,255,0.10);
-
             border-radius: 999px;
-
             font-size: 13px;
             margin-bottom: 18px;
         }
 
         .hero h2 {
             font-size: clamp(36px, 5vw, 62px);
-
             line-height: 1.1;
-
             letter-spacing: -1.5px;
-
             margin-bottom: 18px;
         }
 
@@ -166,442 +136,249 @@
 
         .hero p {
             max-width: 610px;
-
             color: #e7f6ed;
-
             font-size: 16px;
         }
 
         .hero-button {
             display: inline-block;
-
             margin-top: 28px;
-
             padding: 13px 23px;
-
             border-radius: 12px;
-
             background: #d9f99d;
-
             color: #124b35;
-
             text-decoration: none;
-
             font-weight: 700;
-
-            transition: 0.25s;
-
             box-shadow: 0 10px 25px rgba(0,0,0,0.14);
-        }
-
-        .hero-button:hover {
-            transform: translateY(-3px);
-            background: white;
         }
 
         .hero-art {
             width: 260px;
             height: 260px;
-
             flex-shrink: 0;
-
             border-radius: 50%;
-
             background: rgba(255,255,255,0.10);
-
             border: 1px solid rgba(255,255,255,0.18);
-
             display: grid;
             place-items: center;
-
             font-size: 105px;
-
-            box-shadow:
-                inset 0 0 60px rgba(255,255,255,0.06);
         }
 
-
-        /* =========================
-           CONTAINER
-        ========================= */
+        /* CONTAINER */
 
         .container {
             max-width: 1150px;
-
             margin: 0 auto;
-
             padding: 65px 20px;
         }
 
         .section-title {
             text-align: center;
-
             margin-bottom: 35px;
         }
 
         .section-title h2 {
             color: #0b5137;
-
             font-size: 30px;
-
             margin-bottom: 8px;
         }
 
         .section-title p {
             color: #66756d;
-
             font-size: 14px;
         }
 
-
-        /* =========================
-           PREDICTION CARD
-        ========================= */
+        /* CARD */
 
         .card {
             background: rgba(255,255,255,0.95);
-
             padding: 35px;
-
             border: 1px solid #e3ece4;
-
             border-radius: 22px;
-
-            box-shadow:
-                0 15px 45px rgba(23, 72, 48, 0.09);
+            box-shadow: 0 15px 45px rgba(23, 72, 48, 0.09);
         }
 
         .card h2 {
             color: #0b5137;
-
             margin-bottom: 7px;
         }
 
         .card-subtitle {
             color: #728078;
-
             font-size: 13px;
-
             margin-bottom: 27px;
         }
 
-
-        /* =========================
-           INPUT GRID
-        ========================= */
+        /* INPUT GRID */
 
         .grid {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 18px;
         }
 
         .field {
             display: flex;
-
             flex-direction: column;
         }
 
         label {
             font-weight: 600;
-
             margin-bottom: 7px;
-
             color: #33453b;
-
             font-size: 13px;
         }
 
         input,
         select {
-
             padding: 13px 14px;
-
             border: 1px solid #d6e1d8;
-
             border-radius: 11px;
-
             font-size: 14px;
-
             background: #fbfdfb;
-
             color: #26372d;
-
-            transition: 0.25s;
-        }
-
-        input:hover,
-        select:hover {
-            border-color: #8fba9e;
         }
 
         input:focus,
         select:focus {
-
             outline: none;
-
             border-color: #16834f;
-
-            box-shadow:
-                0 0 0 4px rgba(22,131,79,0.10);
-
-            background: white;
+            box-shadow: 0 0 0 4px rgba(22,131,79,0.10);
         }
 
-
-        /* =========================
-           BUTTON
-        ========================= */
+        /* BUTTON */
 
         .button-area {
             margin-top: 32px;
-
             text-align: center;
         }
 
         button {
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #0b6844,
-                    #16945d
-                );
-
+            background: linear-gradient(135deg, #0b6844, #16945d);
             color: white;
-
             border: none;
-
             padding: 14px 40px;
-
             border-radius: 12px;
-
             font-size: 16px;
-
             font-weight: 700;
-
             cursor: pointer;
-
-            box-shadow:
-                0 10px 22px rgba(11,104,68,0.22);
-
-            transition: 0.25s;
+            box-shadow: 0 10px 22px rgba(11,104,68,0.22);
         }
 
         button:hover {
-
             transform: translateY(-2px);
-
-            box-shadow:
-                0 14px 28px rgba(11,104,68,0.28);
         }
 
-
-        /* =========================
-           RESULT
-        ========================= */
+        /* RESULT */
 
         #result {
-
             display: none;
-
             margin-top: 28px;
-
             padding: 28px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ecfdf3,
-                    #f7fee7
-                );
-
+            background: linear-gradient(135deg, #ecfdf3, #f7fee7);
             border: 1px solid #cdebd7;
-
             border-radius: 18px;
-
             text-align: center;
-
-            animation: resultIn 0.4s ease;
         }
 
         #result h2 {
-
             color: #0b6844;
-
             font-size: 21px;
         }
 
         #prediction {
-
             font-size: 40px;
-
             font-weight: 800;
-
             color: #0b6844;
-
             margin-top: 8px;
         }
 
         #result p {
-
             color: #63756b;
-
             font-size: 13px;
         }
 
-
-        /* ERROR */
-
         #error {
-
             display: none;
-
             margin-top: 20px;
-
             padding: 15px;
-
             background: #fff1f2;
-
             color: #991b1b;
-
             border: 1px solid #fecdd3;
-
             border-radius: 10px;
         }
 
-
-        /* =========================
-           HOW IT WORKS
-        ========================= */
+        /* HOW IT WORKS */
 
         .steps {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
+            grid-template-columns: repeat(4, 1fr);
             gap: 18px;
         }
 
         .step {
-
             background: white;
-
             padding: 25px 18px;
-
             border-radius: 18px;
-
             text-align: center;
-
             border: 1px solid #e2ebe4;
-
-            box-shadow:
-                0 8px 25px rgba(23,72,48,0.06);
-
-            transition: 0.25s;
-        }
-
-        .step:hover {
-
-            transform: translateY(-5px);
-
-            border-color: #a7d8b7;
+            box-shadow: 0 8px 25px rgba(23,72,48,0.06);
         }
 
         .step-icon {
-
             font-size: 30px;
-
             margin-bottom: 12px;
         }
 
         .step h3 {
-
             color: #0b5137;
-
             font-size: 16px;
-
             margin-bottom: 7px;
         }
 
         .step p {
-
             color: #718078;
-
             font-size: 12px;
         }
 
-
-        /* =========================
-           ABOUT
-        ========================= */
+        /* ABOUT */
 
         .about {
-
             background: #0b5137;
-
             color: white;
-
             border-radius: 24px;
-
             padding: 38px;
-
             text-align: center;
         }
 
         .about h2 {
-
             font-size: 27px;
-
             margin-bottom: 10px;
         }
 
         .about p {
-
             max-width: 760px;
-
             margin: 0 auto;
-
             color: #dceee4;
-
             font-size: 14px;
         }
 
         .developer {
-
             margin-top: 20px;
-
             display: inline-block;
-
             padding: 10px 18px;
-
             background: rgba(255,255,255,0.10);
-
             border-radius: 999px;
-
             font-size: 13px;
         }
 
-
-        /* =========================
-           FOOTER
-        ========================= */
+        /* FOOTER */
 
         footer {
-
             background: #062f22;
-
             color: #cfe4d8;
-
             text-align: center;
-
             padding: 25px 20px;
-
             font-size: 12px;
         }
 
@@ -609,40 +386,9 @@
             color: #d9f99d;
         }
 
-
-        /* =========================
-           ANIMATION
-        ========================= */
-
-        @keyframes resultIn {
-
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-
-        /* =========================
-           RESPONSIVE
-        ========================= */
+        /* MOBILE */
 
         @media (max-width: 900px) {
-
-            .hero {
-                padding: 60px 6%;
-            }
-
-            .hero-art {
-                width: 190px;
-                height: 190px;
-                font-size: 75px;
-            }
 
             .grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -651,29 +397,23 @@
             .steps {
                 grid-template-columns: repeat(2, 1fr);
             }
+
+            .hero-art {
+                width: 190px;
+                height: 190px;
+                font-size: 75px;
+            }
         }
 
         @media (max-width: 650px) {
-
-            .header {
-                padding: 13px 18px;
-            }
 
             .nav {
                 display: none;
             }
 
             .hero {
-
-                min-height: auto;
-
                 padding: 55px 22px;
-
                 text-align: center;
-            }
-
-            .hero-content {
-                margin: auto;
             }
 
             .hero-art {
@@ -691,16 +431,11 @@
         }
 
     </style>
-
 </head>
-
 
 <body>
 
-
-    <!-- =========================
-         HEADER
-    ========================= -->
+    <!-- HEADER -->
 
     <header class="header">
 
@@ -716,34 +451,19 @@
 
         </div>
 
-
         <nav class="nav">
 
-            <a href="#home">
-                Home
-            </a>
-
-            <a href="#prediction">
-                Prediction
-            </a>
-
-            <a href="#how-it-works">
-                How It Works
-            </a>
-
-            <a href="#about">
-                About
-            </a>
+            <a href="#home">Home</a>
+            <a href="#prediction-section">Prediction</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#about">About</a>
 
         </nav>
 
     </header>
 
 
-
-    <!-- =========================
-         HERO
-    ========================= -->
+    <!-- HERO -->
 
     <section class="hero" id="home">
 
@@ -764,12 +484,11 @@
                 data with a machine learning based prediction system.
             </p>
 
-            <a href="#prediction" class="hero-button">
+            <a href="#prediction-section" class="hero-button">
                 Start Prediction →
             </a>
 
         </div>
-
 
         <div class="hero-art">
             🌾
@@ -778,12 +497,9 @@
     </section>
 
 
+    <!-- PREDICTION -->
 
-    <!-- =========================
-         PREDICTION
-    ========================= -->
-
-    <section class="container" id="prediction">
+    <section class="container" id="prediction-section">
 
         <div class="section-title">
 
@@ -813,302 +529,103 @@
 
                 <div class="grid">
 
-
                     <div class="field">
-
-                        <label>
-                            Crop Type
-                        </label>
-
-                        <input
-                            type="text"
-                            id="Crop_Type"
-                            required
-                        >
-
+                        <label>Crop Type</label>
+                        <input type="text" id="Crop_Type" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Region
-                        </label>
-
-                        <input
-                            type="text"
-                            id="Region"
-                            required
-                        >
-
+                        <label>Region</label>
+                        <input type="text" id="Region" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Soil Type
-                        </label>
-
-                        <input
-                            type="text"
-                            id="Soil_Type"
-                            required
-                        >
-
+                        <label>Soil Type</label>
+                        <input type="text" id="Soil_Type" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Season
-                        </label>
-
-                        <input
-                            type="text"
-                            id="Season"
-                            required
-                        >
-
+                        <label>Season</label>
+                        <input type="text" id="Season" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Farm Area (Hectares)
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Farm_Area_Hectares"
-                            required
-                        >
-
+                        <label>Farm Area (Hectares)</label>
+                        <input type="number" step="any" id="Farm_Area_Hectares" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Rainfall (mm)
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Rainfall_mm"
-                            required
-                        >
-
+                        <label>Rainfall (mm)</label>
+                        <input type="number" step="any" id="Rainfall_mm" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Temperature (°C)
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Temperature_C"
-                            required
-                        >
-
+                        <label>Temperature (°C)</label>
+                        <input type="number" step="any" id="Temperature_C" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Humidity (%)
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Humidity_Percent"
-                            required
-                        >
-
+                        <label>Humidity (%)</label>
+                        <input type="number" step="any" id="Humidity_Percent" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Soil pH
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Soil_pH"
-                            required
-                        >
-
+                        <label>Soil pH</label>
+                        <input type="number" step="any" id="Soil_pH" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Nitrogen (kg/ha)
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Nitrogen_kg_ha"
-                            required
-                        >
-
+                        <label>Nitrogen (kg/ha)</label>
+                        <input type="number" step="any" id="Nitrogen_kg_ha" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Phosphorus (kg/ha)
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Phosphorus_kg_ha"
-                            required
-                        >
-
+                        <label>Phosphorus (kg/ha)</label>
+                        <input type="number" step="any" id="Phosphorus_kg_ha" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Potassium (kg/ha)
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Potassium_kg_ha"
-                            required
-                        >
-
+                        <label>Potassium (kg/ha)</label>
+                        <input type="number" step="any" id="Potassium_kg_ha" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Fertilizer Used (kg)
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Fertilizer_Used_kg"
-                            required
-                        >
-
+                        <label>Fertilizer Used (kg)</label>
+                        <input type="number" step="any" id="Fertilizer_Used_kg" required>
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Pesticide Used (Liters)
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Pesticide_Used_Liters"
-                            required
-                        >
-
+                        <label>Pesticide Used (Liters)</label>
+                        <input type="number" step="any" id="Pesticide_Used_Liters" required>
                     </div>
 
-
                     <div class="field">
+                        <label>Irrigation Method</label>
 
-                        <label>
-                            Irrigation Method
-                        </label>
-
-                        <select
-                            id="Irrigation_Method"
-                            required
-                        >
-
-                            <option value="">
-                                Select
-                            </option>
-
-                            <option value="Drip">
-                                Drip
-                            </option>
-
-                            <option value="Sprinkler">
-                                Sprinkler
-                            </option>
-
-                            <option value="Flood">
-                                Flood
-                            </option>
-
+                        <select id="Irrigation_Method" required>
+                            <option value="">Select</option>
+                            <option value="Drip">Drip</option>
+                            <option value="Sprinkler">Sprinkler</option>
+                            <option value="Flood">Flood</option>
                         </select>
 
                     </div>
 
-
                     <div class="field">
-
-                        <label>
-                            Sunshine Hours
-                        </label>
-
-                        <input
-                            type="number"
-                            step="any"
-                            id="Sunshine_Hours"
-                            required
-                        >
-
+                        <label>Sunshine Hours</label>
+                        <input type="number" step="any" id="Sunshine_Hours" required>
                     </div>
 
-
                     <div class="field">
+                        <label>Organic Farming</label>
 
-                        <label>
-                            Organic Farming
-                        </label>
-
-                        <select
-                            id="Organic_Farming"
-                            required
-                        >
-
-                            <option value="">
-                                Select
-                            </option>
-
-                            <option value="Yes">
-                                Yes
-                            </option>
-
-                            <option value="No">
-                                No
-                            </option>
-
+                        <select id="Organic_Farming" required>
+                            <option value="">Select</option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
                         </select>
 
                     </div>
-
 
                 </div>
 
@@ -1146,15 +663,9 @@
     </section>
 
 
+    <!-- HOW IT WORKS -->
 
-    <!-- =========================
-         HOW IT WORKS
-    ========================= -->
-
-    <section
-        class="container"
-        id="how-it-works"
-    >
+    <section class="container" id="how-it-works">
 
         <div class="section-title">
 
@@ -1171,12 +682,9 @@
 
         <div class="steps">
 
-
             <div class="step">
 
-                <div class="step-icon">
-                    📊
-                </div>
+                <div class="step-icon">📊</div>
 
                 <h3>
                     Data Input
@@ -1191,9 +699,7 @@
 
             <div class="step">
 
-                <div class="step-icon">
-                    🧹
-                </div>
+                <div class="step-icon">🧹</div>
 
                 <h3>
                     Preprocessing
@@ -1208,9 +714,7 @@
 
             <div class="step">
 
-                <div class="step-icon">
-                    🤖
-                </div>
+                <div class="step-icon">🤖</div>
 
                 <h3>
                     ML Model
@@ -1225,9 +729,7 @@
 
             <div class="step">
 
-                <div class="step-icon">
-                    🌾
-                </div>
+                <div class="step-icon">🌾</div>
 
                 <h3>
                     Prediction
@@ -1239,21 +741,14 @@
 
             </div>
 
-
         </div>
 
     </section>
 
 
+    <!-- ABOUT -->
 
-    <!-- =========================
-         ABOUT
-    ========================= -->
-
-    <section
-        class="container"
-        id="about"
-    >
+    <section class="container" id="about">
 
         <div class="about">
 
@@ -1266,7 +761,6 @@
                 designed to predict crop yield using agricultural and
                 environmental data.
             </p>
-
 
             <div class="developer">
 
@@ -1283,151 +777,99 @@
     </section>
 
 
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
+    <!-- FOOTER -->
 
     <footer>
 
         <p>
-
             © 2026
             <strong>CropVision AI</strong>
-
             · Developed by Shraddha Dhawale
-
         </p>
 
     </footer>
 
 
-
-    <!-- =========================
-         EXISTING PREDICTION JAVASCRIPT
-    ========================= -->
+    <!-- PREDICTION JAVASCRIPT -->
 
     <script>
 
         document
             .getElementById("predictionForm")
-            .addEventListener(
-                "submit",
-                async function(event) {
+            .addEventListener("submit", async function(event) {
 
-                    event.preventDefault();
+                event.preventDefault();
 
+                const data = {
 
-                    const data = {
+                    Crop_Type:
+                        document.getElementById("Crop_Type").value,
 
-                        Crop_Type:
-                            document.getElementById("Crop_Type").value,
+                    Region:
+                        document.getElementById("Region").value,
 
-                        Region:
-                            document.getElementById("Region").value,
+                    Soil_Type:
+                        document.getElementById("Soil_Type").value,
 
-                        Soil_Type:
-                            document.getElementById("Soil_Type").value,
+                    Season:
+                        document.getElementById("Season").value,
 
-                        Season:
-                            document.getElementById("Season").value,
+                    Farm_Area_Hectares:
+                        document.getElementById("Farm_Area_Hectares").value,
 
+                    Rainfall_mm:
+                        document.getElementById("Rainfall_mm").value,
 
-                        Farm_Area_Hectares:
-                            document.getElementById(
-                                "Farm_Area_Hectares"
-                            ).value,
+                    Temperature_C:
+                        document.getElementById("Temperature_C").value,
 
+                    Humidity_Percent:
+                        document.getElementById("Humidity_Percent").value,
 
-                        Rainfall_mm:
-                            document.getElementById(
-                                "Rainfall_mm"
-                            ).value,
+                    Soil_pH:
+                        document.getElementById("Soil_pH").value,
 
+                    Nitrogen_kg_ha:
+                        document.getElementById("Nitrogen_kg_ha").value,
 
-                        Temperature_C:
-                            document.getElementById(
-                                "Temperature_C"
-                            ).value,
+                    Phosphorus_kg_ha:
+                        document.getElementById("Phosphorus_kg_ha").value,
 
+                    Potassium_kg_ha:
+                        document.getElementById("Potassium_kg_ha").value,
 
-                        Humidity_Percent:
-                            document.getElementById(
-                                "Humidity_Percent"
-                            ).value,
+                    Fertilizer_Used_kg:
+                        document.getElementById("Fertilizer_Used_kg").value,
 
+                    Pesticide_Used_Liters:
+                        document.getElementById("Pesticide_Used_Liters").value,
 
-                        Soil_pH:
-                            document.getElementById(
-                                "Soil_pH"
-                            ).value,
+                    Irrigation_Method:
+                        document.getElementById("Irrigation_Method").value,
 
+                    Sunshine_Hours:
+                        document.getElementById("Sunshine_Hours").value,
 
-                        Nitrogen_kg_ha:
-                            document.getElementById(
-                                "Nitrogen_kg_ha"
-                            ).value,
+                    Organic_Farming:
+                        document.getElementById("Organic_Farming").value
 
-
-                        Phosphorus_kg_ha:
-                            document.getElementById(
-                                "Phosphorus_kg_ha"
-                            ).value,
+                };
 
 
-                        Potassium_kg_ha:
-                            document.getElementById(
-                                "Potassium_kg_ha"
-                            ).value,
+                try {
 
+                    const response = await fetch(
+                        "/predict",
+                        {
+                            method: "POST",
 
-                        Fertilizer_Used_kg:
-                            document.getElementById(
-                                "Fertilizer_Used_kg"
-                            ).value,
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
 
-
-                        Pesticide_Used_Liters:
-                            document.getElementById(
-                                "Pesticide_Used_Liters"
-                            ).value,
-
-
-                        Irrigation_Method:
-                            document.getElementById(
-                                "Irrigation_Method"
-                            ).value,
-
-
-                        Sunshine_Hours:
-                            document.getElementById(
-                                "Sunshine_Hours"
-                            ).value,
-
-
-                        Organic_Farming:
-                            document.getElementById(
-                                "Organic_Farming"
-                            ).value
-
-                    };
-
-
-                    const response =
-                        await fetch(
-                            "/predict",
-                            {
-                                method: "POST",
-
-                                headers: {
-                                    "Content-Type":
-                                        "application/json"
-                                },
-
-                                body:
-                                    JSON.stringify(data)
-                            }
-                        );
+                            body: JSON.stringify(data)
+                        }
+                    );
 
 
                     const result =
@@ -1440,11 +882,9 @@
                             .getElementById("error")
                             .style.display = "none";
 
-
                         document
                             .getElementById("result")
                             .style.display = "block";
-
 
                         document
                             .getElementById("prediction")
@@ -1452,18 +892,15 @@
                                 result.prediction +
                                 " Tons / Hectare";
 
-
                     } else {
 
                         document
                             .getElementById("result")
                             .style.display = "none";
 
-
                         document
                             .getElementById("error")
                             .style.display = "block";
-
 
                         document
                             .getElementById("error")
@@ -1472,11 +909,26 @@
 
                     }
 
+                } catch (error) {
+
+                    document
+                        .getElementById("result")
+                        .style.display = "none";
+
+                    document
+                        .getElementById("error")
+                        .style.display = "block";
+
+                    document
+                        .getElementById("error")
+                        .innerText =
+                            "Could not connect to prediction server.";
+
                 }
-            );
+
+            });
 
     </script>
-
 
 </body>
 </html>
