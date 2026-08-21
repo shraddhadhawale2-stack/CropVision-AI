@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>AI Assistant | CropVision AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <a href="/" class="logo">
+
+        <span class="logo-icon">
+            🌱
+        </span>
+
+        <span>
+            CropVision <b>AI</b>
+        </span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/prediction">
+            📊 Prediction
+        </a>
+
+        <a href="/chatbot"
+           class="active">
+            🤖 AI Assistant
+        </a>
+
+        <a href="/dashboard">
+            📈 Dashboard
+        </a>
+
+        <a href="/#how-it-works">
+            ⚙ How It Works
+        </a>
+
+        <a href="/#about">
+            ℹ About
+        </a>
+
+        <button class="predict-btn"
+                onclick="window.location.href='/prediction'">
+
+            Predict Now
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= AI ASSISTANT ================= -->
+
+<section class="info-section">
+
+
+    <div class="section-heading">
+
+        <span>
+            AI ASSISTANCE
+        </span>
+
+        <h2>
+
+            Your Smart
+
+            <b>
+                Agriculture Assistant
+            </b>
+
+        </h2>
+
+        <p>
+
+            Ask questions about crops, soil, rainfall,
+            irrigation, fertilizers and crop yield.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- ================= CHAT ================= -->
+
+    <div class="chat-wrapper">
+
+        <div class="chat-card">
+
+
+            <!-- CHAT HEADER -->
+
+            <div class="chat-header">
+
+                <div>
+
+                    <h2>
+                        🤖 CropVision AI Assistant
+                    </h2>
+
+                    <p>
+                        Smart agricultural guidance
+                    </p>
+
+                </div>
+
+
+                <div class="online">
+
+                    ● Online
+
+                </div>
+
+            </div>
+
+
+
+            <!-- CHAT MESSAGES -->
+
+            <div id="chatMessages"
+                 class="chat-messages">
+
+
+                <div class="message bot">
+
+                    👋 Hello! I'm your
+                    <strong>CropVision AI Assistant</strong>.
+
+                    <br><br>
+
+                    I can help you understand:
+
+                    <br>
+                    🌾 Crop Yield
+                    <br>
+                    🌱 Soil
+                    <br>
+                    🌧️ Rainfall
+                    <br>
+                    💧 Irrigation
+                    <br>
+                    🧪 Fertilizers
+                    <br>
+                    🌡️ Temperature
+                    <br>
+                    🚜 Farming
+
+                    <br><br>
+
+                    Ask me an agriculture-related question!
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ================= SUGGESTIONS ================= -->
+
+            <div class="suggestions">
+
+
+                <button class="suggestion"
+                        onclick="askQuestion('How can I improve crop yield?')">
+
+                    🌾 Improve crop yield
+
+                </button>
+
+
+                <button class="suggestion"
+                        onclick="askQuestion('How does rainfall affect crop yield?')">
+
+                    🌧️ Rainfall
+
+                </button>
+
+
+                <button class="suggestion"
+                        onclick="askQuestion('Why is soil pH important for crops?')">
+
+                    🌱 Soil pH
+
+                </button>
+
+
+                <button class="suggestion"
+                        onclick="askQuestion('Why is irrigation important for crops?')">
+
+                    💧 Irrigation
+
+                </button>
+
+
+                <button class="suggestion"
+                        onclick="askQuestion('What is the role of fertilizer in crop production?')">
+
+                    🧪 Fertilizer
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- ================= INPUT ================= -->
+
+            <div class="chat-input">
+
+
+                <input
+
+                    type="text"
+
+                    id="userInput"
+
+                    placeholder="Ask an agriculture question..."
+
+                    autocomplete="off"
+
+                >
+
+
+                <button
+
+                    type="button"
+
+                    id="sendButton"
+
+                    onclick="sendMessage()"
+
+                >
+
+                    ➤ Send
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+
+    <div class="footer-logo">
+
+        🌱 CropVision AI
+
+    </div>
+
+
+    <p>
+
+        Smart Agriculture • AI Powered Crop Yield Prediction
+
+    </p>
+
+
+    <div class="creator">
+
+        Designed & Developed by
+
+        <strong>
+            Shraddha Dhawale
+        </strong>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 CropVision AI. All Rights Reserved.
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="{{ url_for('static', filename='chatbot.js') }}">
+</script>
+
+
+</body>
+
+</html>

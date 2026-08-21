@@ -1,0 +1,18 @@
+.chart-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 25px;
+    height: 390px;
+    box-shadow: var(--shadow);
+}
+
+.chart-card h3 {
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 20px;
+}
+
+.chart-card canvas {
+    width: 100% !important;
+    height: 290px !important;
+}

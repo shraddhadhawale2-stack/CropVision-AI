@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | CropVision AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        /* =========================================
+           DASHBOARD PAGE
+        ========================================= */
+
+        .dashboard-container {
+
+            width: 92%;
+            max-width: 1200px;
+
+            margin: 45px auto;
+
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .dashboard-header {
+
+            margin-bottom: 35px;
+
+        }
+
+        .dashboard-tag {
+
+            color: #159957;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 10px;
+
+        }
+
+        .dashboard-header h1 {
+
+            font-size: 36px;
+
+            color: #174d32;
+
+            margin-bottom: 10px;
+
+        }
+
+        .dashboard-header p {
+
+            color: #66756c;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =========================================
+           MODEL STATUS
+        ========================================= */
+
+        .model-status {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 18px;
+
+            padding: 9px 16px;
+
+            background: #eef8f1;
+
+            color: #18733c;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+        }
+
+        .status-dot {
+
+            width: 9px;
+
+            height: 9px;
+
+            background: #22a65a;
+
+            border-radius: 50%;
+
+        }
+
+
+        /* =========================================
+           STATS GRID
+        ========================================= */
+
+        .dashboard-stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 22px;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        /* =========================================
+           STAT CARD
+        ========================================= */
+
+        .dashboard-stat-card {
+
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 25px;
+
+            min-height: 145px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0, 0, 0, 0.07);
+
+            border: 1px solid #e8eee9;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+        }
+
+
+        .dashboard-stat-card:hover {
+
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 10px 30px
+                rgba(0, 0, 0, 0.10);
+
+        }
+
+
+        /* =========================================
+           ICON
+        ========================================= */
+
+        .dashboard-stat-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            min-width: 60px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #eef8f1;
+
+            border-radius: 14px;
+
+            font-size: 28px;
+
+        }
+
+
+        /* =========================================
+           TEXT
+        ========================================= */
+
+        .dashboard-stat-card p {
+
+            margin: 0 0 7px 0;
+
+            color: #718078;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+        }
+
+
+        .dashboard-stat-card h2 {
+
+            margin: 0;
+
+            color: #174d32;
+
+            font-size: 30px;
+
+            line-height: 1.1;
+
+        }
+
+
+        .dashboard-stat-card small {
+
+            color: #718078;
+
+            font-size: 12px;
+
+            font-weight: normal;
+
+        }
+
+
+        /* =========================================
+           INFORMATION BOX
+        ========================================= */
+
+        .dashboard-info {
+
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 28px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0, 0, 0, 0.07);
+
+            border: 1px solid #e8eee9;
+
+        }
+
+
+        .dashboard-info h2 {
+
+            color: #174d32;
+
+            margin-bottom: 10px;
+
+            font-size: 21px;
+
+        }
+
+
+        .dashboard-info p {
+
+            color: #66756c;
+
+            line-height: 1.7;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        /* =========================================
+           DATA SUMMARY
+        ========================================= */
+
+        .data-summary {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 15px;
+
+        }
+
+
+        .summary-box {
+
+            padding: 18px;
+
+            background: #f7faf8;
+
+            border-left: 4px solid #2e9d5b;
+
+            border-radius: 8px;
+
+        }
+
+
+        .summary-box span {
+
+            display: block;
+
+            color: #718078;
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .summary-box strong {
+
+            color: #174d32;
+
+            font-size: 17px;
+
+        }
+
+
+        /* =========================================
+           BUTTONS
+        ========================================= */
+
+        .dashboard-actions {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+            margin-top: 35px;
+
+        }
+
+
+        .dashboard-primary-btn {
+
+            display: inline-block;
+
+            padding: 14px 23px;
+
+            background: #2e9d5b;
+
+            color: white;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+        }
+
+
+        .dashboard-primary-btn:hover {
+
+            background: #247d48;
+
+        }
+
+
+        .dashboard-secondary-btn {
+
+            display: inline-block;
+
+            padding: 14px 23px;
+
+            background: #eef8f1;
+
+            color: #247d48;
+
+            text-decoration: none;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+        }
+
+
+        .dashboard-secondary-btn:hover {
+
+            background: #dff1e5;
+
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .dashboard-stats {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        @media (max-width: 650px) {
+
+            .dashboard-container {
+
+                width: 94%;
+
+                margin: 30px auto;
+
+            }
+
+            .dashboard-header h1 {
+
+                font-size: 28px;
+
+            }
+
+            .dashboard-stats {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .data-summary {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     NAVBAR
+========================================= -->
+
+<nav class="navbar">
+
+    <a href="/" class="logo">
+
+        <span class="logo-icon">
+            🌱
+        </span>
+
+        <span>
+            CropVision <b>AI</b>
+        </span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/prediction">
+            📊 Prediction
+        </a>
+
+        <a href="/chatbot">
+            🤖 AI Assistant
+        </a>
+
+        <a href="/dashboard"
+           class="active">
+            📈 Dashboard
+        </a>
+
+        <a href="/#how-it-works">
+            ⚙ How It Works
+        </a>
+
+        <a href="/#about">
+            ℹ About
+        </a>
+
+        <button
+            class="predict-btn"
+            onclick="window.location.href='/prediction'">
+
+            Predict Now
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================
+     MAIN DASHBOARD
+========================================= -->
+
+<main class="dashboard-container">
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <div class="dashboard-header">
+
+        <div class="dashboard-tag">
+
+            CROP ANALYTICS
+
+        </div>
+
+
+        <h1>
+
+            📊 Crop Yield Dashboard
+
+        </h1>
+
+
+        <p>
+
+            Explore agricultural data and crop
+            yield statistics using CropVision AI.
+
+        </p>
+
+
+        <div class="model-status">
+
+            <span class="status-dot"></span>
+
+            🧠 ML Model:
+
+            {{ model_status }}
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================
+         FOUR MAIN BOXES
+    ====================================== -->
+
+    <section class="dashboard-stats">
+
+
+        <!-- DATASET RECORDS -->
+
+        <div class="dashboard-stat-card">
+
+            <div class="dashboard-stat-icon">
+
+                📋
+
+            </div>
+
+
+            <div>
+
+                <p>
+                    Dataset Records
+                </p>
+
+                <h2>
+
+                    {{ total_records }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CROP TYPES -->
+
+        <div class="dashboard-stat-card">
+
+            <div class="dashboard-stat-icon">
+
+                🌾
+
+            </div>
+
+
+            <div>
+
+                <p>
+                    Crop Types
+                </p>
+
+                <h2>
+
+                    {{ total_crops }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- REGIONS -->
+
+        <div class="dashboard-stat-card">
+
+            <div class="dashboard-stat-icon">
+
+                📍
+
+            </div>
+
+
+            <div>
+
+                <p>
+                    Regions
+                </p>
+
+                <h2>
+
+                    {{ total_regions }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- AVERAGE YIELD -->
+
+        <div class="dashboard-stat-card">
+
+            <div class="dashboard-stat-icon">
+
+                📈
+
+            </div>
+
+
+            <div>
+
+                <p>
+                    Average Yield
+                </p>
+
+                <h2>
+
+                    {{ average_yield }}
+
+                    <small>
+                        tons/ha
+                    </small>
+
+                </h2>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         DATA INFORMATION
+    ====================================== -->
+
+    <section class="dashboard-info">
+
+
+        <h2>
+
+            🌱 CropVision Dataset Overview
+
+        </h2>
+
+
+        <p>
+
+            This dashboard summarizes the agricultural
+            dataset used by the CropVision AI machine
+            learning model. The dataset contains farm
+            conditions such as crop type, region, soil,
+            season, rainfall, temperature, humidity,
+            nutrients, irrigation and crop yield.
+
+        </p>
+
+
+        <div class="data-summary">
+
+
+            <div class="summary-box">
+
+                <span>
+                    Prediction Target
+                </span>
+
+                <strong>
+                    Crop Yield
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Yield Unit
+                </span>
+
+                <strong>
+                    Tons / Hectare
+                </strong>
+
+            </div>
+
+
+            <div class="summary-box">
+
+                <span>
+                    Model Status
+                </span>
+
+                <strong>
+                    {{ model_status }}
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================
+         ACTION BUTTONS
+    ====================================== -->
+
+    <div class="dashboard-actions">
+
+
+        <a
+            href="/prediction"
+            class="dashboard-primary-btn">
+
+            🌱 Make New Prediction →
+
+        </a>
+
+
+        <a
+            href="/chatbot"
+            class="dashboard-secondary-btn">
+
+            🤖 Ask AI Assistant
+
+        </a>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <div class="footer-logo">
+
+        🌱 CropVision AI
+
+    </div>
+
+
+    <p>
+
+        Smart Agriculture •
+        AI Powered Crop Yield Prediction
+
+    </p>
+
+
+    <div class="creator">
+
+        Designed & Developed by
+
+        <strong>
+            Shraddha Dhawale
+        </strong>
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 CropVision AI.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>

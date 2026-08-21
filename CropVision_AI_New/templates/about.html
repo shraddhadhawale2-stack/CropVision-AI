@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>About | CropVision AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7faf8;
+            color: #24352b;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 6%;
+            background: white;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: #24352b;
+            font-size: 22px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            font-size: 25px;
+        }
+
+        .logo b {
+            color: #2e9d5b;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #34483b;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: #2e9d5b;
+        }
+
+        .nav-links a.active {
+            background: #2e9d5b;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 25px;
+        }
+
+        .predict-btn {
+            border: none;
+            background: #2e9d5b;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 9px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .predict-btn:hover {
+            background: #247d48;
+        }
+
+        /* ================= MAIN ================= */
+
+        .about-container {
+            width: 90%;
+            max-width: 1150px;
+            margin: 40px auto 70px;
+        }
+
+        /* ================= TECHNOLOGY ================= */
+
+        .technology-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+
+        .technology-title {
+            text-align: center;
+            color: #174d32;
+            font-size: 22px;
+            margin-bottom: 25px;
+        }
+
+        .tech-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-weight: 600;
+            color: #405247;
+            font-size: 15px;
+        }
+
+        .tech-icon {
+            font-size: 19px;
+        }
+
+        /* ================= HERO ================= */
+
+        .about-hero {
+            background: white;
+            border-radius: 20px;
+            padding: 55px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+
+        .profile-icon {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: #39b86c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+        }
+
+        .about-hero h1 {
+            color: #174d32;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .about-hero h2 {
+            color: #66756c;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 22px;
+        }
+
+        .badge {
+            padding: 9px 16px;
+            border-radius: 20px;
+            background: #eef8f1;
+            color: #23834b;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* ================= PROJECT CARD ================= */
+
+        .project-card {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+
+        .project-card h2 {
+            color: #174d32;
+            margin-bottom: 18px;
+        }
+
+        .project-card p {
+            color: #66756c;
+            line-height: 1.8;
+            font-size: 15px;
+            margin-bottom: 12px;
+        }
+
+        .project-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ================= STATS ================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-box {
+            background: white;
+            border-radius: 15px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+        }
+
+        .stat-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #23834b;
+        }
+
+        .stat-box p {
+            margin-top: 8px;
+            color: #66756c;
+            font-size: 13px;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+
+        .feature {
+            background: #f7faf8;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #2e9d5b;
+        }
+
+        .feature h3 {
+            color: #174d32;
+            margin-bottom: 8px;
+            font-size: 17px;
+        }
+
+        .feature p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* ================= DEVELOPER ================= */
+
+        .developer-card {
+            background: white;
+            border-radius: 18px;
+            padding: 35px;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.07);
+        }
+
+        .developer-icon {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: #39b86c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 35px;
+        }
+
+        .developer-card h2 {
+            color: #174d32;
+            margin-bottom: 7px;
+        }
+
+        .developer-card h3 {
+            color: #66756c;
+            font-size: 15px;
+            font-weight: normal;
+        }
+
+        .developer-badges {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .developer-badge {
+            background: #eef8f1;
+            color: #23834b;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: white;
+            border-top: 1px solid #e5ebe7;
+            padding: 35px 7%;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            color: #23834b;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        footer p {
+            color: #66756c;
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+        .creator {
+            color: #66756c;
+            font-size: 13px;
+        }
+
+        .creator strong {
+            color: #23834b;
+        }
+
+        .copyright {
+            text-align: center;
+            color: #89958e;
+            font-size: 12px;
+            margin-top: 25px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container {
+                width: 94%;
+            }
+
+            .about-hero {
+                padding: 40px 20px;
+            }
+
+            .about-hero h1 {
+                font-size: 26px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <a href="/" class="logo">
+
+        <span class="logo-icon">
+            🌱
+        </span>
+
+        <span>
+            CropVision <b>AI</b>
+        </span>
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="/">
+            Home
+        </a>
+
+        <a href="/prediction">
+            📊 Prediction
+        </a>
+
+        <a href="/chatbot">
+            🤖 AI Assistant
+        </a>
+
+        <a href="/dashboard">
+            📈 Dashboard
+        </a>
+
+        <a href="/about"
+           class="active">
+            ℹ About
+        </a>
+
+        <button class="predict-btn"
+                onclick="window.location.href='/prediction'">
+
+            Predict Now
+
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="about-container">
+
+
+    <!-- ================= TECHNOLOGIES ================= -->
+
+    <section class="technology-card">
+
+        <h2 class="technology-title">
+            🚀 Technologies Used
+        </h2>
+
+
+        <div class="tech-grid">
+
+            <div class="tech-item">
+                <span class="tech-icon">🌐</span>
+                HTML5
+            </div>
+
+            <div class="tech-item">
+                <span class="tech-icon">🎨</span>
+                CSS3
+            </div>
+
+            <div class="tech-item">
+                <span class="tech-icon">⚡</span>
+                JavaScript ES6
+            </div>
+
+            <div class="tech-item">
+                <span class="tech-icon">🐍</span>
+                Python
+            </div>
+
+            <div class="tech-item">
+                <span class="tech-icon">🌶️</span>
+                Flask
+            </div>
+
+            <div class="tech-item">
+                <span class="tech-icon">🐼</span>
+                Pandas
+            </div>
+
+            <div class="tech-item">
+                <span class="tech-icon">🤖</span>
+                Scikit-Learn
+            </div>
+
+            <div class="tech-item">
+                <span class="tech-icon">📦</span>
+                Joblib
+            </div>
+
+            <div class="tech-item">
+                <span class="tech-icon">📊</span>
+                Chart.js
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PROJECT HERO ================= -->
+
+    <section class="about-hero">
+
+        <div class="profile-icon">
+            🌾
+        </div>
+
+
+        <h1>
+            CropVision AI
+        </h1>
+
+
+        <h2>
+            Smart Agriculture • AI Powered Crop Yield Prediction
+        </h2>
+
+
+        <div class="badges">
+
+            <span class="badge">
+                ⚙ Machine Learning
+            </span>
+
+            <span class="badge">
+                🌱 Smart Agriculture
+            </span>
+
+            <span class="badge">
+                🤖 AI Powered
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= ABOUT PROJECT ================= -->
+
+    <section class="project-card">
+
+        <h2>
+            🌱 About CropVision AI
+        </h2>
+
+
+        <p>
+            CropVision AI is an intelligent agricultural platform
+            designed to help farmers understand crop productivity
+            and make better farming decisions using machine learning.
+        </p>
+
+
+        <p>
+            The system analyzes important agricultural factors such as
+            crop type, region, soil type, season, rainfall,
+            temperature, humidity, soil nutrients, fertilizer,
+            irrigation and sunshine hours to estimate crop yield.
+        </p>
+
+
+        <p>
+            By combining a trained machine-learning model with a
+            simple and user-friendly web interface, CropVision AI
+            makes agricultural prediction technology easier to use
+            and understand.
+        </p>
+
+    </section>
+
+
+
+    <!-- ================= PROJECT STATS ================= -->
+
+    <section class="stats-grid">
+
+
+        <div class="stat-box">
+
+            <div class="stat-icon">
+                📋
+            </div>
+
+            <div class="stat-number">
+                19
+            </div>
+
+            <p>
+                Dataset Features
+            </p>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <div class="stat-icon">
+                🌾
+            </div>
+
+            <div class="stat-number">
+                AI
+            </div>
+
+            <p>
+                Crop Yield Prediction
+            </p>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <div class="stat-icon">
+                🤖
+            </div>
+
+            <div class="stat-number">
+                ML
+            </div>
+
+            <p>
+                Powered System
+            </p>
+
+        </div>
+
+
+        <div class="stat-box">
+
+            <div class="stat-icon">
+                ⚡
+            </div>
+
+            <div class="stat-number">
+                Real-Time
+            </div>
+
+            <p>
+                Prediction
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= KEY FEATURES ================= -->
+
+    <section class="project-card">
+
+        <h2>
+            ✨ Key Features
+        </h2>
+
+
+        <div class="feature-grid">
+
+
+            <div class="feature">
+
+                <h3>
+                    🌾 Crop Yield Prediction
+                </h3>
+
+                <p>
+                    Estimate expected crop yield from
+                    agricultural and environmental conditions.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <h3>
+                    📊 Agricultural Dashboard
+                </h3>
+
+                <p>
+                    Explore useful crop and dataset
+                    statistics through a simple dashboard.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <h3>
+                    🤖 AI Assistant
+                </h3>
+
+                <p>
+                    Ask agriculture-related questions and
+                    receive useful farming guidance.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <h3>
+                    🌱 Farmer Friendly
+                </h3>
+
+                <p>
+                    A clean and simple interface designed
+                    for easy interaction.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= DEVELOPER ================= -->
+
+    <section class="developer-card">
+
+        <div class="developer-icon">
+            👩‍💻
+        </div>
+
+
+        <h2>
+            Shraddha Dhawale
+        </h2>
+
+
+        <h3>
+            CropVision AI Project Developer
+        </h3>
+
+
+        <div class="developer-badges">
+
+            <span class="developer-badge">
+                💻 Machine Learning
+            </span>
+
+            <span class="developer-badge">
+                🌱 Smart Agriculture
+            </span>
+
+            <span class="developer-badge">
+                🐍 Python & Flask
+            </span>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+
+        <div>
+
+            <div class="footer-logo">
+                🌱 CropVision AI
+            </div>
+
+            <p>
+                Smart Agriculture • AI Powered Crop Yield Prediction
+            </p>
+
+        </div>
+
+
+        <div class="creator">
+
+            Designed & Developed by
+
+            <strong>
+                Shraddha Dhawale
+            </strong>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+        © 2026 CropVision AI. All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
